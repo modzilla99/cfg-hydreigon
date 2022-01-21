@@ -47,6 +47,6 @@ configuration_git_port: 22
 configuration_git_public_key: FIXME
 # yamllint enable rule:line-length
 configuration_git_protocol: ssh
-configuration_git_repository: modzilla99/cfg-cookiecutter
+configuration_git_repository: modzilla99/cfg-hydreigon
 configuration_git_username: git
 configuration_git_version: main

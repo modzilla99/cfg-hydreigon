@@ -33,6 +33,7 @@ operator_authorized_keys:
 
 resolvconf_nameserver:
   - 10.0.0.1
+  - 10.0.0.5
 resolvconf_search: modlab.cloud
 
 ##########################
