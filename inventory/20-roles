@@ -15,37 +15,54 @@
 # The "all" group is not used in OSISM. Therefore it is important
 # that all nodes are explicitly listed here.
 [generic]
-node01.modlab.cloud
+osism-mgr-0.modlab.cloud
+osism-compute-0.modlab.cloud
+osism-compute-1.modlab.cloud
+osism-compute-2.modlab.cloud
 
 # Nodes that act as manager (sometimes called deployment node)
 # are included in this group.
 [manager]
-node01.modlab.cloud
+osism-mgr-0.modlab.cloud
 
 # Nodes which are intended for monitoring services belong to
 # this group
 [monitoring]
+osism-mgr-0.modlab.cloud
 
 # Nodes that serve as controllers, so things like scheduler,
 # API or database run there, of the environment.
 [control]
+osism-compute-0.modlab.cloud
+osism-compute-1.modlab.cloud
+osism-compute-2.modlab.cloud
 
 # Virtual systems managed by OpenStack Nova are placed on
 # nodes in this group.
 [compute]
+osism-compute-0.modlab.cloud
+osism-compute-1.modlab.cloud
+osism-compute-2.modlab.cloud
 
 # Network resources managed by OpenStack Neutron, such as
 # L3 routers, are placed on these nodes. This group has nothing
 # to do with the general network configuration.
 [network]
+osism-mgr-0.modlab.cloud
 
 # Nodes that serve as controllers for Ceph, so things like the
 # Ceph Monitor service run here.
 [ceph-control]
+osism-compute-0.modlab.cloud
+osism-compute-1.modlab.cloud
+osism-compute-2.modlab.cloud
 
 # The storage available in these systems is provided in the
 # form of OSDs for Ceph.
 [ceph-resource]
+osism-compute-0.modlab.cloud
+osism-compute-1.modlab.cloud
+osism-compute-2.modlab.cloud
 
 # NOTE: These empty groups are only necessary if netbox is used. After
 #       the initial import of the hosts these groups can be commented

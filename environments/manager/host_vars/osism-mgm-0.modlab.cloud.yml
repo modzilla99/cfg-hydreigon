@@ -2,24 +2,24 @@
 ##########################################################
 # ansible
 
-ansible_host: 192.168.16.5
+ansible_host: 10.0.33.2
 
 ##########################################################
 # generic
 
-management_interface: eno1
-console_interface: eno1
+management_interface: enp1s0
+console_interface: enp1s0
 
 ##########################################################
 ##########################################################
 # network-interfaces
 
 network_interfaces:
-  - device: eno1
+  - device: enp1s0
     auto: true
     family: inet
     method: static
-    address: 192.168.16.5
-    netmask: 255.255.240.0
-    gateway: 192.168.16.1
+    address: 10.0.33.2
+    netmask: 255.255.255.0
+    gateway: 10.0.33.254
     mtu: 1500

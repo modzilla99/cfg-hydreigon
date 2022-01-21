@@ -2,4 +2,4 @@
 ##########################
 # patchman-client
 
-patchman_client_host: "{{ hostvars['manager01.modlab.cloud']['ansible_' + hostvars['manager01.modlab.cloud']['management_interface']]['ipv4']['address'] }}"
+patchman_client_host: "{{ hostvars['osism-mgm-0.modlab.cloud']['ansible_' + hostvars['osism-mgm-0.modlab.cloud']['management_interface']]['ipv4']['address'] }}"
