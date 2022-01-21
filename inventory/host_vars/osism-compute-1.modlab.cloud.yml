@@ -1,0 +1,128 @@
+---
+##########################################################
+# ansible
+
+# NOTE: Address where the node can be reached via SSH.
+ansible_host: 10.0.33.11
+
+##########################################################
+# generic
+
+# NOTE: Interface where the node can be reached via SSH.
+console_interface: enp1s0
+
+# NOTE: The internal interface for the internal communication.
+management_interface: enp1s0
+
+# NOTE: The address of the internal interface.
+internal_address: 10.0.33.11
+
+##########################################################
+# netdata
+
+netdata_host_type: client
+
+# NOTE: Uncomment this when this node should be a Netdata server.
+
+# netdata_host_type: server
+
+##########################################################
+# network-interfaces
+
+# NOTE: This is the initial management interface. Further interfaces
+#       must be added.
+
+network_interfaces:
+# Management Network
+- device: enp1s0
+  auto: true
+  family: inet
+  method: static
+  address: 10.0.33.11
+  netmask: 255.255.255.0
+  gateway: 10.0.33.254
+  mtu: 1500
+# External OpenStack Services
+- device: vlan13
+  method: static
+  address: 10.66.13.11
+  netmask: 255.255.255.0
+  vlan:
+    raw-device: enp1s0
+# Internal OpenStack Services
+- device: vlan14
+  method: static
+  address: 10.66.14.11
+  netmask: 255.255.255.0
+  vlan:
+    raw-device: enp1s0
+# Public External Network
+- device: vlan15
+  method: static
+  address: 10.66.15.11
+  netmask: 255.255.255.0
+  vlan:
+    raw-device: enp1s0
+# Tenant Network (Tunnel)
+- device: vlan37
+  method: manual
+  family: inet
+  vlan:
+    raw-device: enp1s0
+  mtu: 1500
+# Migration Network
+- device: vlan38
+  method: static
+  address: 10.66.38.11
+  netmask: 255.255.255.0
+  vlan:
+    raw-device: enp10s0
+  mtu: 1500
+# Storage Network (vlan50)
+- device: enp10s0
+  auto: true
+  family: inet
+  method: static
+  address: 10.66.50.11
+  netmask: 255.255.255.0
+  mtu: 1500
+# Public Storage Network
+- device: vlan51
+  method: static
+  address: 10.66.51.11
+  netmask: 255.255.255.0
+  vlan:
+    raw-device: enp10s0
+  mtu: 1500
+
+##########################################################
+# kolla
+
+network_interface: enp1s0
+
+api_interface: vlan14
+bifrost_network_interface: enp1s0
+dns_interface: vlan13
+kolla_external_vip_interface: vlan13
+migration_interface: vlan38
+octavia_network_interface: vlan15
+storage_interface: vlan51
+tunnel_interface: vlan37
+
+##########################################################
+# ceph
+
+# NOTE: Uncomment this when this node is a part of the Ceph cluster.
+
+monitor_address: 10.66.50.11
+radosgw_address: 10.66.51.11
+
+monitor_interface: enp10s0
+radosgw_interface: vlan51
+
+# NOTE: Uncomment this when this node should be a OSD node.
+
+devices:
+  - /dev/vdb
+  - /dev/vdc
+  - /dev/vdd
